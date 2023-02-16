@@ -1,2 +1,2 @@
 # FlagQuiz
-Petit jeu de connaissances sur les drapeaux en JS vanilla !
+Petit jeu de connaissance sur les drapeaux en JS vanilla !
