@@ -5,10 +5,13 @@ const true_response = document.getElementById("true_response");
 const false_response = document.getElementById("false_response");
 
 let true_response_number = document.getElementById("true_response_number");
-let false_reponse_number = document.getElementById("false_reponse_number");
+let false_response_number = document.getElementById("false_response_number");
 
-true_response_number.innerHTML = 0;
-false_response_number.innerHTML = 0;
+//Initialisation des scores : 
+let true_response_result = 0;
+let false_response_result = 0;
+true_response_number.innerHTML = true_response_result;
+false_response_number.innerHTML = false_response_result;
 
 fetch("https://flagcdn.com/fr/codes.json")
     .then(response => response.json())
@@ -21,6 +24,8 @@ fetch("https://flagcdn.com/fr/codes.json")
 
         //Function that generates a random country-domain composed of two letters :
         function getRandomCountryDomain(){
+
+            console.log("La fonction getrandomcountry est déclenchée");
             let chosen_country_random = Math.floor(Math.random() * Object.keys(data).length);
             let country_domain = Object.keys(data)[chosen_country_random];
             return {
@@ -43,12 +48,17 @@ fetch("https://flagcdn.com/fr/codes.json")
                 //La réponse est juste, passage au drapeau suivant.
                 if(user_answer == country_name){
                     answer.value = "";
-                    image.src = apiUrlBuilder(flag_info.domain.toString());         
-                    console.log("Bien joué !");
+                    const flag_info = getRandomCountryDomain();
+                    image.src = apiUrlBuilder(flag_info.domain);
+                    true_response_result++;
+                    true_response_number.innerHTML = true_response_result;
                 }
                 //La réponse est fausse, on prévient l'utilisateur.
                 else{
-                    console.log("Pas bien joué");
+                    const flag_info = getRandomCountryDomain();
+                    image.src = apiUrlBuilder(flag_info.domain);
+                    false_response_result++;
+                    false_response_number.innerHTML = false_response_result;
                 }    
             
             
@@ -64,6 +74,7 @@ fetch("https://flagcdn.com/fr/codes.json")
         }
 
         validation.addEventListener("click", function(){
+            const flag_info = getRandomCountryDomain();
             isValidAnswer(answer.value, getCorrespondingCountry(flag_info.index))
 
         })
