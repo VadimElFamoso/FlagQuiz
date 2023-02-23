@@ -55,10 +55,7 @@ fetch("https://flagcdn.com/fr/codes.json")
 
         validation.addEventListener("click", function() {
             isValid(answer.value, real_answer);
-        })
-
-
-        
+        })       
     })
     
 

@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'batuphat_scriptextrude';
+    src: url('batuphat_script_extrude-webfont.woff2') format('woff2'),
+         url('batuphat_script_extrude-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'batuphat_scriptregular';
+    src: url('batuphat_script-webfont.woff2') format('woff2'),
+         url('batuphat_script-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
